@@ -3,12 +3,12 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"image/color"
 	"io"
 	"log"
 	"net/http"
 	"strings"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 )
 
@@ -27,8 +27,6 @@ var traceCmd = &cobra.Command{
 		}
 	},
 }
-
-//07:00
 
 func init() {
 	rootCmd.AddCommand(traceCmd)
@@ -63,10 +61,8 @@ func getData(url string) {
 
 	c := color.New(color.FgRed).Add(color.Underline).Add(color.Bold)
 	c.Println("DATA FOUND:")
-	fmt.Printf(
-		"IP: %s\nCITY: %s\nREGION: %s\nCOUNTRY: %s\nLOCATION: %s\n TIMEZONE: %s\n POSTAL: %s\n",
-		data.IP, data.City, data.Region, data.Country, data.Location, data.Timezone, data.Postal,
-	)
+	fmt.Printf("IP: %s\nCITY: %s\nREGION: %s\nCOUNTRY: %s\nLOCATION: %s\n TIMEZONE: %s\n POSTAL: %s\n",
+		data.IP, data.City, data.Region, data.Country, data.Location, data.Timezone, data.Postal)
 }
 
 func showData(url string) []byte {
