@@ -3,6 +3,7 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"image/color"
 	"io"
 	"log"
 	"net/http"
@@ -60,7 +61,8 @@ func getData(url string) {
 		return
 	}
 
-	fmt.Println("DATA FOUND:")
+	c := color.New(color.FgRed).Add(color.Underline).Add(color.Bold)
+	c.Println("DATA FOUND:")
 	fmt.Printf(
 		"IP: %s\nCITY: %s\nREGION: %s\nCOUNTRY: %s\nLOCATION: %s\n TIMEZONE: %s\n POSTAL: %s\n",
 		data.IP, data.City, data.Region, data.Country, data.Location, data.Timezone, data.Postal,
